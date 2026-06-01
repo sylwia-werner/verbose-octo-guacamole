@@ -1,9 +1,9 @@
-import { RecipeCard } from "@/features/components/recipe-card";
+import { RecipeCard } from "@/features/components/list/recipe-card";
 import { Recipe } from "@/features/types/recipe.types";
 
-type Props = { recipes: Recipe[] };
+type RecipeListProps = { recipes: Recipe[] };
 
-export function RecipeList({ recipes }: Props) {
+export function RecipeList({ recipes }: RecipeListProps) {
   if (recipes.length === 0) {
     return (
       <div className="py-24 text-center">

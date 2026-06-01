@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/shared/components/ui/card";
 import { Badge } from "@/shared/components/ui/badge";
+import { Star } from "lucide-react";
 
 const DIFFICULTY_COLOR: Record<Recipe["difficulty"], string> = {
   Easy: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
@@ -24,8 +25,8 @@ export function RecipeCard({ recipe }: Props) {
   const totalTime = recipe.prepTimeMinutes + recipe.cookTimeMinutes || 0;
 
   return (
-    <Card className="relative flex flex-col overflow-hidden transition-shadow hover:shadow-md">
-      <div className="bg-muted relative aspect-video">
+    <Card className="relative flex flex-col overflow-hidden pt-0 transition-transform duration-250 ease-out hover:scale-[1.01] hover:shadow-md">
+      <div className="bg-muted relative aspect-video overflow-hidden rounded-t-xl">
         <Image
           src={recipe.image}
           alt=""
@@ -43,11 +44,11 @@ export function RecipeCard({ recipe }: Props) {
             {recipe.name}
           </Link>
         </CardTitle>
-        <div className="flex flex-wrap gap-1">
-          <Badge variant="secondary">{recipe.cuisine}</Badge>
+        <div className="flex flex-wrap gap-1.5">
           <Badge className={DIFFICULTY_COLOR[recipe.difficulty]}>
             {recipe.difficulty}
           </Badge>
+          <Badge variant="secondary">{recipe.cuisine}</Badge>
         </div>
       </CardHeader>
       <CardContent className="flex-1">
@@ -58,8 +59,8 @@ export function RecipeCard({ recipe }: Props) {
         </div>
       </CardContent>
       <CardFooter className="flex items-center justify-between">
-        <span className="text-sm font-medium">
-          ★ {recipe.rating.toFixed(1)}
+        <span className="flex items-center gap-2 text-sm font-medium">
+          <Star size={16} /> {recipe.rating.toFixed(1) ?? "-"}
         </span>
         <span className="text-muted-foreground text-xs">
           {recipe.reviewCount} reviews

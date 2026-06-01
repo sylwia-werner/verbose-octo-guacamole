@@ -1,4 +1,4 @@
-import { RecipeCardSkeleton } from "@/features/components/recipe-card-skeleton";
+import { RecipeCardSkeleton } from "@/features/components/list/recipe-card-skeleton";
 
 export function RecipeListSkeleton({ count = 12 }: { count?: number }) {
   return (
